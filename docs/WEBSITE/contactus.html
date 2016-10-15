@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ContactUs-Sai Foods and Namkeen</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/jquery.placeholder.js"></script>
+<script src="js/jquery.form.js"></script>
+<link rel="stylesheet" href="css/style.css">
+	<style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+background-color: #FFDAB9;
+	border: 10px solid #f4511e;
+  }
+ h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+
+ .navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+  }
+</style>
+<script>
+$(function(){
+$('#contact').validate({
+submitHandler: function(form) {
+    $(form).ajaxSubmit({
+    url: 'process.php',
+    success: function() {
+    $('#contact').hide();
+    $('#contact-form').append("<p class='thanks'>Thanks! Your request has been sent.</p>")
+    }
+    });
+    }
+});         
+});
+</script>
+</head>
+
+<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="products.html">PRODUCTS</a></li>
+        <li><a href="contactus.hmtl">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<h2><center>CONTACT US! </CENTER></H2>
+
+<div id="contact-form">	
+<H2>
+<form id="contact" action="MAILTO:moorthy_adi@yahoo.co.in" method="post" enctype="text/plain">
+<fieldset>	
+
+<label for="name">Name</label>
+<input type="text" name="name" placeholder="Full Name" title="Enter your name" class="required">
+
+<label for="email">E-mail</label>
+<input type="email" name="email" placeholder="yourname@domain.com" title="Enter your e-mail address" class="required email">
+
+<label for="phone">Phone</label>
+<input type="tel" name="phone" placeholder="ex. (555) 555-5555">
+
+<label for="website">Website</label>
+<input type="url" name="url" placeholder="http://">
+
+<label for="message">Question/Comment</label>
+<textarea name="message"></textarea>
+<CENTER>
+<input type="submit" name="submit" class="button" id="submit" value="Send Message" /></CENTER>
+</H2>
+</fieldset>
+</form>
+
+</div><!-- /end #contact-form -->
+
+<script src="js/modernizr-min.js"></script>
+<script>
+if (!Modernizr.input.placeholder){
+      $('input[placeholder], textarea[placeholder]').placeholder();
+}
+</script>
+</body>
+</html>
