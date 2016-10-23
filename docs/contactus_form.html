@@ -16,7 +16,7 @@
 <script src="js/jquery.placeholder.js"></script>
 <script src="js/jquery.form.js"></script>
 <link rel="stylesheet" href="css/style.css">
-	<style>
+	<style>	
 html { 
   background-color: #FFDAB9; 
   -webkit-background-size: cover;
@@ -24,15 +24,13 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
   body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #818181;
 background-color: #FFDAB9;
-background-size: cover;
-width: 100%;
-height: 100%;
-
+	border: 10px solid #f4511e;
   }
  h2 {
       font-size: 24px;
@@ -46,10 +44,11 @@ height: 100%;
       margin-bottom: 0;
       background-color: #f4511e;
       z-index: 9999;
-      
+      border: 0;
       font-size: 12px !important;
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
+      border-radius: 0;
       font-family: Montserrat, sans-serif;
   }
   .navbar li a, .navbar .navbar-brand {
@@ -60,6 +59,7 @@ height: 100%;
       background-color: #fff !important;
   }
   .navbar-default .navbar-toggle {
+      border-color: transparent;
       color: #fff !important;
   }
   footer .glyphicon {
@@ -67,36 +67,40 @@ height: 100%;
       margin-bottom: 20px;
       color: #f4511e;
   }
-.div-1a {
- float: left;
-border-width: thick;
-border: 10px;
-border-color: #f4511e;
-}
-.div-1b {
-float: left;
-border-width: thick;
-border: 10px;
-border-color: orange;
-}
-.img-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 
-    text-align:center; /* Align center inline elements */
-    font: 0/0 a;
-}
+
+
+
+
+
+
+
+
+
+
 
 
 </style>
+<script>
+$(function(){
+$('#contact').validate({
+submitHandler: function(form) {
+    $(form).ajaxSubmit({
+    url: 'MAILTO:moorthyadi@gmail.com',
+    success: function() {
+    $('#contact').hide();
+    $('#contact-form').append("<p class='thanks'>Thanks! Your request has been sent.</p>")
+    }
+    });
+    }
+});         
+});
+</script>
 </head>
 
 <body>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
+	
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -105,6 +109,7 @@ border-color: orange;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -117,21 +122,40 @@ border-color: orange;
 </nav>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<center>
-<table align="center">
-   <tr>
-      <td><div style="border-width: 10px; border-style: solid; border-color: #f4511e; margin-right: 20px; padding: 10px;"><img src="images\gmail.png" height="40px"></img><br><h2><a href="contactus_form.html"> Click Here to send us you query via mail </a></h2></div></td>
-      <td><div style="border-width: 10px; border-style: solid; border-color: #f4511e; padding: 10px;"><img src="images\facebook_messenger_icon.png" height="40px"></img><br><h2><a target="_blank" href="https://m.me/823322731045773">Send us your query/Feedback on Facebook. <br> Get Instant Replies!!</a></h2></div></td>
-   </tr>
-</table>
-</center>
+<h2><center>CONTACT US! </CENTER></H2>
 
+<div id="contact-form">	
+<H2>
+<form id="contact" action="MAILTO:moorthyadi@gmail.com" method="post" enctype="text/plain">
+<fieldset>	
 
+<label for="name">Name</label>
+<input type="text" name="name" placeholder="Full Name" title="Enter your name" class="required">
+
+<label for="email">E-mail</label>
+<input type="email" name="email" placeholder="yourname@domain.com" title="Enter your e-mail address" class="required email">
+
+<label for="phone">Phone</label>
+<input type="tel" name="phone" placeholder="ex. (555) 555-5555">
+
+<label for="website">Website</label>
+<input type="url" name="url" placeholder="http://">
+
+<label for="message">Question/Comment</label>
+<textarea name="message"></textarea>
+<CENTER>
+<input type="submit" name="submit" class="button" id="submit" value="contact" /></CENTER>
+</H2>
+</fieldset>
+</form>
+
+</div><!-- /end #contact-form -->
+
+<script src="js/modernizr-min.js"></script>
+<script>
+if (!Modernizr.input.placeholder){
+      $('input[placeholder], textarea[placeholder]').placeholder();
+}
+</script>
 </body>
 </html>
